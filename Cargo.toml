@@ -1,0 +1,27 @@
+[package]
+name = "downcat"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4"
+static-files = "0.2.3"
+actix-web-static-files = "4.0.0"
+colored = "2.0.0"
+tokio = { version = "1.17.0", features = ["full"] }
+serde = { version = "1.0.136", features = ["derive"] }
+tokio-stream = { version = "0.1.8", features = ["fs"] }
+actix-codec = "0.5.0"
+bytes = "1.1.0"
+futures-util = "0.3.21"
+uuid = { version = "0.8.2", features = ["serde", "v4"] }
+blob-uuid = "0.4.0"
+clap = { version = "3.1.8", features = ["derive"] }
+actix-cors = "0.6.1"
+qstring = "0.7.2"
+local-ip-address = "0.4.4"
+
+[build-dependencies]
+static-files = "0.2.3"
