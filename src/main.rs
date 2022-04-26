@@ -9,6 +9,7 @@ use actix_web_static_files::ResourceFiles;
 use clap::StructOpt;
 use colored::*;
 use local_ip_address::local_ip;
+use rustls::ServerConfig;
 
 use crate::models::AppState;
 
@@ -17,16 +18,17 @@ mod info;
 mod middleware;
 mod models;
 mod routes;
+mod ssl;
 mod util;
 
 include!(concat!(env!("OUT_DIR"), "/generated.rs"));
 
-async fn on_ready(host: String, port: u16) {
+async fn on_ready(host: String, port: u16, ssl: bool) {
     println!(
         "{}\n{} {}\n",
         format!("✅ Downcat v{} running!", info::version()).bright_green(),
         "✨ Listening on".bright_yellow(),
-        format!("http://{host}:{port}/").bright_blue()
+        format!("{}://{host}:{port}/", if ssl { "https" } else { "http" }).bright_blue()
     );
 
     #[cfg(debug_assertions)]
@@ -42,6 +44,18 @@ async fn main() -> std::io::Result<()> {
         Ok(x) => x.to_string(),
         _ => String::from("0.0.0.0"),
     });
+    let ssl = args.ssl;
+    let mut rustls_config: Option<ServerConfig> = None;
+
+    if ssl {
+        rustls_config = match ssl::load_rustls_config() {
+            Ok(x) => Some(x),
+            Err(e) => {
+                println!("Error enabling SSL: {e}");
+                return Ok(());
+            }
+        }
+    }
 
     println!("\n{}\n", "🐈 Starting downcat...".dimmed());
 
@@ -77,9 +91,18 @@ async fn main() -> std::io::Result<()> {
             .service(ResourceFiles::new("/", generate()))
     });
 
+    let addr = format!("{host}:{port}");
+
     match tokio::join!(
-        server.bind(format!("{host}:{port}"))?.run(),
-        on_ready(host, port)
+        match if ssl {
+            server.bind_rustls(addr, rustls_config.unwrap())
+        } else {
+            server.bind(addr)
+        } {
+            Ok(x) => x.run(),
+            _ => return Ok(()),
+        },
+        on_ready(host, port, ssl)
     ) {
         (Err(e), _) => println!("An error occoured: {e}"),
         _ => {}

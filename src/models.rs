@@ -82,8 +82,9 @@ pub struct Args {
     #[clap(long, short = 'P', help = "Sets a password (highly recommended)")]
     pub password: Option<String>,
 
-    // #[clap(long, help = "Enables SSL")]
-    // pub ssl: bool,
+    #[clap(long, help = "Enables SSL")]
+    pub ssl: bool,
+
     #[clap(long, short, help = "(default 3030)")]
     pub port: Option<u16>,
 
