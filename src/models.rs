@@ -79,6 +79,9 @@ impl ErrRes {
 #[derive(Parser)]
 #[clap(version, author = "sexnine")]
 pub struct Args {
+    #[clap(subcommand)]
+    pub command: Option<SubCommands>,
+
     #[clap(long, short = 'P', help = "Sets a password (highly recommended)")]
     pub password: Option<String>,
 
@@ -96,4 +99,9 @@ pub struct Args {
     //     help = "Downcat will serve any files it has permissions to"
     // )]
     // pub not_lock_dir: bool,
+}
+
+#[derive(clap::Subcommand)]
+pub enum SubCommands {
+    Update,
 }

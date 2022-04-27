@@ -11,7 +11,7 @@ use colored::*;
 use local_ip_address::local_ip;
 use rustls::ServerConfig;
 
-use crate::models::AppState;
+use crate::models::{AppState, SubCommands};
 
 mod codec;
 mod info;
@@ -19,6 +19,7 @@ mod middleware;
 mod models;
 mod routes;
 mod ssl;
+mod updater;
 mod util;
 
 include!(concat!(env!("OUT_DIR"), "/generated.rs"));
@@ -33,11 +34,25 @@ async fn on_ready(host: String, port: u16, ssl: bool) {
 
     #[cfg(debug_assertions)]
     println!("{}\n", "🛠 CORS enabled for development".red());
+
+    match web::block(|| updater::check_for_update()).await {
+        Err(_) => println!("{}", "⚠ Error while checking for update".bright_red()),
+        _ => {}
+    }
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let args = models::Args::parse();
+
+    match &args.command {
+        Some(SubCommands::Update) => {
+            web::block(|| updater::update()).await;
+            return Ok(());
+        }
+        _ => {}
+    }
+
     let port = args.port.unwrap_or(3030);
     let password = args.password;
     let host = args.bind.unwrap_or(match local_ip() {
