@@ -93,6 +93,12 @@ pub struct Args {
 
     #[clap(long = "bind", short = 'b', help = "IP to bind to (default local IP)")]
     pub bind: Option<String>,
+
+    #[clap(
+        long = "disable-update-check",
+        help = "Will disable the downcat update checker"
+    )]
+    pub disable_update_check: bool,
     // #[clap(
     //     long = "any",
     //     short = 'a',
