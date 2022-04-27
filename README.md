@@ -4,7 +4,7 @@
 
 ![](assets/downcat-sm.png)
 
-A simple cross-platform remote file management tool to upload and download files over HTTP (HTTPS soon)
+A simple cross-platform remote file management tool to upload and download files over HTTP/S
 
 [📜 License](LICENSE.md)  |  [✨ Features](#-features) | [🎉 Install](#-install) | [🎁 Releases](https://github.com/sexnine/downcat/releases)
 -- | -- | -- | -- 
@@ -22,7 +22,7 @@ A simple cross-platform remote file management tool to upload and download files
 
 ✨ **Easy to install** - No dependancies, just one file
 
-🗂 **Upload and download files easily** - Using HTTP (HTTPS soon) with a sexy web UI
+🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
 🌈 **Cross platform** - Windows, MacOS and Linux support
 
@@ -89,13 +89,13 @@ Note: While developing, the frontend and backend should be run seperately.  When
 2. Build using `cargo build --release`
 
 ## 🛣 Roadmap
-- [x] Retrieve Files and Folders
-  - [x] Get metadata
-  - [x] Sort file list
+- [x] Retrieve Files and Folders `v0.1.0`
+  - [x] Get metadata `v0.1.0`
+  - [x] Sort file list `v0.1.0`
   - [ ] Search file list
   - [ ] Enhanced File Icons
   - [ ] Download multiple files
-  - [x] Directory History
+  - [x] Directory History `v0.1.0`
 - [ ] Uploading Files
   - [ ] Uploading Folders
 - [ ] Managing Files/Folders
@@ -103,12 +103,12 @@ Note: While developing, the frontend and backend should be run seperately.  When
   - [ ] Deleting
   - [ ] Moving
   - [ ] Copying
-- [ ] SSL
+- [x] SSL `v0.2.0`
   - Optionally enable SSL using `--ssl` flag
-- [x] Password Authentication
-- [ ] Updater
-  - [ ] Checks for updates
-  - [ ] `downcat update` to perform a self-update
+- [x] Password Authentication `v0.1.0`
+- [x] Updater `v0.2.0`
+  - [x] Checks for updates `v0.2.0`
+  - [x] `downcat update` to perform a self-update `v0.2.0`
 - [ ] Cross Platform support
   - [x] Windows
   - [x] Linux `untested`
