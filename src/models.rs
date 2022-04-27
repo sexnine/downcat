@@ -79,6 +79,9 @@ impl ErrRes {
 #[derive(Parser)]
 #[clap(version, author = "sexnine")]
 pub struct Args {
+    #[clap(subcommand)]
+    pub command: Option<SubCommands>,
+
     #[clap(long, short = 'P', help = "Sets a password (highly recommended)")]
     pub password: Option<String>,
 
@@ -90,10 +93,21 @@ pub struct Args {
 
     #[clap(long = "bind", short = 'b', help = "IP to bind to (default local IP)")]
     pub bind: Option<String>,
+
+    #[clap(
+        long = "disable-update-check",
+        help = "Will disable the downcat update checker"
+    )]
+    pub disable_update_check: bool,
     // #[clap(
     //     long = "any",
     //     short = 'a',
     //     help = "Downcat will serve any files it has permissions to"
     // )]
     // pub not_lock_dir: bool,
+}
+
+#[derive(clap::Subcommand)]
+pub enum SubCommands {
+    Update,
 }

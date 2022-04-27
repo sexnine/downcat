@@ -11,7 +11,7 @@ use colored::*;
 use local_ip_address::local_ip;
 use rustls::ServerConfig;
 
-use crate::models::AppState;
+use crate::models::{AppState, SubCommands};
 
 mod codec;
 mod info;
@@ -19,11 +19,12 @@ mod middleware;
 mod models;
 mod routes;
 mod ssl;
+mod updater;
 mod util;
 
 include!(concat!(env!("OUT_DIR"), "/generated.rs"));
 
-async fn on_ready(host: String, port: u16, ssl: bool) {
+async fn on_ready(host: String, port: u16, ssl: bool, check_for_update: bool) {
     println!(
         "{}\n{} {}\n",
         format!("✅ Downcat v{} running!", info::version()).bright_green(),
@@ -33,11 +34,33 @@ async fn on_ready(host: String, port: u16, ssl: bool) {
 
     #[cfg(debug_assertions)]
     println!("{}\n", "🛠 CORS enabled for development".red());
+
+    if check_for_update {
+        match web::block(|| updater::check_for_update()).await {
+            Err(_) => println!("{}", "⚠ Error while checking for update".bright_red()),
+            _ => {}
+        }
+    }
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let args = models::Args::parse();
+
+    match &args.command {
+        Some(SubCommands::Update) => {
+            match web::block(|| updater::update()).await {
+                Err(_) => println!(
+                    "{}",
+                    "❌ An unexpected error occoured while updating downcat".bright_red()
+                ),
+                _ => {}
+            }
+            return Ok(());
+        }
+        _ => {}
+    }
+
     let port = args.port.unwrap_or(3030);
     let password = args.password;
     let host = args.bind.unwrap_or(match local_ip() {
@@ -45,6 +68,8 @@ async fn main() -> std::io::Result<()> {
         _ => String::from("0.0.0.0"),
     });
     let ssl = args.ssl;
+    let check_for_update = !args.disable_update_check;
+
     let mut rustls_config: Option<ServerConfig> = None;
 
     if ssl {
@@ -102,7 +127,7 @@ async fn main() -> std::io::Result<()> {
             Ok(x) => x.run(),
             _ => return Ok(()),
         },
-        on_ready(host, port, ssl)
+        on_ready(host, port, ssl, check_for_update)
     ) {
         (Err(e), _) => println!("An error occoured: {e}"),
         _ => {}
