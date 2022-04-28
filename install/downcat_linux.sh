@@ -22,7 +22,7 @@ chmod +x downcat # Makes program executable, required to run from /usr/bin and a
 
 echo ''
 printf 'Would you like to copy the program to /usr/bin? It requires you to run this script as root (y/n): '
-read USRBIN
+read USRBIN </dev/tty
 # The most annoying if statement I've had to write in a while. It was harder to make than it looks.
 if [ "$USRBIN" = "y" ]; then
 	if [ "$EUID" -ne 0 ]; then

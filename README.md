@@ -35,7 +35,7 @@ A simple cross-platform remote file management tool to upload and download files
 You can run an automated install of downcat using the command below.  It is highly recommended you run it as root to avoid any permissions-related problems.
 
 ```sh
-curl -sSL https://raw.githubusercontent.com/sexnine/downcat/main/install/downcat_linux.sh | bash
+curl -sSL https://raw.githubusercontent.com/sexnine/downcat/main/install/downcat_linux.sh | sudo bash
 ```
 
 ### Manual install
