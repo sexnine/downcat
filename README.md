@@ -28,7 +28,17 @@ A simple cross-platform remote file management tool to upload and download files
 
 ## 🎉 Install
 
-###### ✨ I aim to make the install process easier in the future through an install script or package.
+### Automated install (Linux only)
+
+###### ⚠ You should not run scripts off the internet without checking them first.  You can view the install script [here](install/downcat_linux.sh).
+
+You can run an automated install of downcat using the command below.  It is highly recommended you run it as root to avoid any permissions-related problems.
+
+```sh
+curl -sSL https://raw.githubusercontent.com/sexnine/downcat/main/install/downcat_linux.sh | bash
+```
+
+### Manual install
 
 1. Download the latest binary from [the releases tab](https://github.com/sexnine/downcat/releases)
 2. Place it into your path
@@ -42,7 +52,7 @@ Run downcat to serve your current directory and then open the link in your brows
 <pre><samp>~$ <kbd>downcat</kbd>
 🐈 Starting downcat...
 
-✅ Downcat v0.1.0 running!
+✅ Downcat v0.2.0 running!
 ✨ Listening on http://192.168.0.23:3030/
 </samp></pre>
 
@@ -118,6 +128,7 @@ Note: While developing, the frontend and backend should be run seperately.  When
 
 ## ❤ Acknowledgements
 - [@sc0tfree](https://github.com/sc0tfree) for the original inspiration for this project ([updog](https://github.com/sc0tfree/updog))
+- [@jethr0-1](https://github.com/jethr0-1) (jethro#1547 on Discord) for making a Linux install script for downcat
 
 <div align="center">
 
