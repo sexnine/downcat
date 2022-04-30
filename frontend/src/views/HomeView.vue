@@ -49,6 +49,7 @@
             class="aspect-square cursor-pointer text-2xl"
             @click="switchToHomeDir"
           />
+          <upload-btn />
         </div>
       </div>
       <div class="relative grow">
@@ -84,6 +85,7 @@
   import { axios } from "../axios";
   import downcatImg from "../assets/downcat-sm.png";
   import ErrorScreen from "../components/ErrorScreen.vue";
+  import UploadBtn from "../components/UploadBtn.vue";
 
   const filesLoading = ref(true);
   const files = ref([]);

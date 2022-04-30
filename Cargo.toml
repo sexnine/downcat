@@ -25,6 +25,7 @@ local-ip-address = "0.4.4"
 rcgen = "0.9.2"
 rustls = "0.20.4"
 self_update = {version = "0.30.0", features = ["archive-zip", "compression-zip-bzip2", "compression-zip-deflate"]}
+actix-multipart = "0.4.0"
 
 [build-dependencies]
 static-files = "0.2.3"
