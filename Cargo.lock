@@ -603,6 +603,7 @@ dependencies = [
  "rustls",
  "self_update",
  "serde",
+ "serde_json",
  "static-files",
  "tokio",
  "tokio-stream",

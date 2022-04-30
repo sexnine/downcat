@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from "vue";
+  import { ref, defineProps } from "vue";
   import { axios } from "../axios";
 
   const inputEl = ref<HTMLInputElement>(null);
@@ -17,7 +17,11 @@
     console.log(files[0]);
 
     let formData = new FormData();
-    formData.append("file", files[0])
+    formData.append("options", JSON.stringify({path: props.path}))
+    
+    for (let i = 0; i < files?.length; i++) {
+      formData.append("file", files[i])
+    }
 
     axios
       .post("/upload", formData, {
@@ -27,4 +31,8 @@
       })
       .then(() => console.log("done"));
   };
+
+  const props = defineProps<{
+    path?: string | null
+  }>();
 </script>
