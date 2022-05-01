@@ -11,6 +11,11 @@ pub struct AppState {
     pub lock_path: bool,
 }
 
+#[derive(Deserialize, Debug, Clone)]
+pub struct UploadOptions {
+    pub path: String,
+}
+
 #[derive(Deserialize)]
 pub struct AuthReq {
     pub password: String,

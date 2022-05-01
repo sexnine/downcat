@@ -111,7 +111,8 @@ async fn main() -> std::io::Result<()> {
                     .service(routes::get_info)
                     .service(routes::get_files)
                     .service(routes::get_file)
-                    .service(routes::auth),
+                    .service(routes::auth)
+                    .service(routes::upload),
             )
             .service(ResourceFiles::new("/", generate()))
     });

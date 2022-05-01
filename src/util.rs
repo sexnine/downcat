@@ -28,8 +28,8 @@ pub fn check_path(path: &Path, state: &AppState) -> bool {
     }
     let parent = Path::new(&state.path);
     if state.lock_path {
-        let mut sus = path.ancestors();
-        while let Some(i) = sus.next() {
+        let mut ancestors = path.ancestors();
+        while let Some(i) = ancestors.next() {
             if i == parent {
                 return true;
             }
