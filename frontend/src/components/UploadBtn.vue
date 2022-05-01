@@ -17,18 +17,18 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, defineProps } from "vue";
+  import { ref, defineProps, defineEmits } from "vue";
   import { axios } from "../axios";
 
-  const inputEl = ref<HTMLInputElement>(null);
+  const inputEl = ref<HTMLInputElement>();
 
   const showUploadBtn = ref(false);
 
   const filesChanged = () =>
-    (showUploadBtn.value = inputEl.value.files?.length > 0);
+    (showUploadBtn.value = (inputEl.value?.files?.length || 0) > 0);
 
   const upload = () => {
-    let files = inputEl.value.files;
+    let files = inputEl.value?.files;
 
     if (!files) return;
 
@@ -45,10 +45,18 @@
           "Content-Type": "multipart/form-data",
         },
       })
-      .then(() => console.log("done"));
+      .then(() => onUploadComplete());
+  };
+
+  const onUploadComplete = () => {
+    emit("uploadComplete");
   };
 
   const props = defineProps<{
     path?: string | null;
+  }>();
+
+  const emit = defineEmits<{
+    (e: "uploadComplete"): void;
   }>();
 </script>

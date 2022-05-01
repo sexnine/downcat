@@ -37,7 +37,6 @@ fn upload_error(message: impl Display) -> HttpResponse {
 
 #[post("/upload")]
 pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl Responder {
-    let mut field_keys: Vec<String> = vec![];
     let mut data: Option<UploadOptions> = None;
 
     'field: while let Some(item) = payload.next().await {
@@ -45,10 +44,6 @@ pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl 
             Ok(x) => x,
             Err(e) => return upload_error(e),
         };
-
-        // field_keys.push(field.name().to_string());
-        // println!("name: {}, all: {:?}", field.name(), field_keys);
-        // println!("{}", field.content_disposition());
 
         if field.name() == "options" {
             if data.is_some() {
@@ -74,10 +69,7 @@ pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl 
         };
 
         let full_path_str = data.path + "/" + &file_name;
-        // println!("full path: {}", full_path_str);
         let full_path = Path::new(&full_path_str);
-
-        // println!("IS PATH valid: {}", check_path(full_path, &state));
 
         if !check_path(full_path, &state) {
             return upload_error("Invalid Path");
@@ -89,7 +81,6 @@ pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl 
         };
 
         while let Some(chunk) = field.next().await {
-            // println!("-- CHUNK: \n{:?}", std::str::from_utf8(&chunk.unwrap()));
             match file.write_all(&chunk.unwrap()).await {
                 Err(e) => {
                     println!(

@@ -49,7 +49,7 @@
             class="aspect-square cursor-pointer text-2xl"
             @click="switchToHomeDir"
           />
-          <upload-btn :path="path" />
+          <upload-btn :path="path" @upload-complete="refresh" />
         </div>
       </div>
       <div class="relative grow">
