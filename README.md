@@ -52,7 +52,7 @@ Run downcat to serve your current directory and then open the link in your brows
 <pre><samp>~$ <kbd>downcat</kbd>
 🐈 Starting downcat...
 
-✅ Downcat v0.2.0 running!
+✅ Downcat v0.3.0 running!
 ✨ Listening on http://192.168.0.23:3030/
 </samp></pre>
 
