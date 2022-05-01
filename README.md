@@ -24,7 +24,7 @@ A simple cross-platform remote file management tool to upload and download files
 
 🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
-🌈 **Cross platform** - Windows, MacOS and Linux support
+🌈 **Cross platform** - Windows and Linux support (MacOS soon)
 
 ## 🎉 Install
 
