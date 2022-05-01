@@ -3,6 +3,8 @@ use std::{fmt::Display, path::Path, vec};
 use actix_multipart::{Field, Multipart};
 use actix_web::{post, web, HttpResponse, Responder};
 use serde_json;
+use tokio::fs::File;
+use tokio::io::AsyncWriteExt;
 use tokio_stream::StreamExt;
 
 use crate::{
@@ -38,15 +40,15 @@ pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl 
     let mut field_keys: Vec<String> = vec![];
     let mut data: Option<UploadOptions> = None;
 
-    while let Some(item) = payload.next().await {
+    'field: while let Some(item) = payload.next().await {
         let mut field = match item {
             Ok(x) => x,
             Err(e) => return upload_error(e),
         };
 
-        field_keys.push(field.name().to_string());
-        println!("name: {}, all: {:?}", field.name(), field_keys);
-        println!("{}", field.content_disposition());
+        // field_keys.push(field.name().to_string());
+        // println!("name: {}, all: {:?}", field.name(), field_keys);
+        // println!("{}", field.content_disposition());
 
         if field.name() == "options" {
             if data.is_some() {
@@ -67,18 +69,37 @@ pub async fn upload(mut payload: Multipart, state: web::Data<AppState>) -> impl 
         };
 
         let file_name = match field.content_disposition().get_filename() {
-            Some(x) => x,
+            Some(x) => x.to_owned(),
             _ => return upload_error("No filename"),
         };
 
-        let full_path_str = data.path + "/" + file_name;
-        println!("full path: {}", full_path_str);
+        let full_path_str = data.path + "/" + &file_name;
+        // println!("full path: {}", full_path_str);
         let full_path = Path::new(&full_path_str);
 
-        println!("IS PATH valid: {}", check_path(full_path, &state));
+        // println!("IS PATH valid: {}", check_path(full_path, &state));
+
+        if !check_path(full_path, &state) {
+            return upload_error("Invalid Path");
+        }
+
+        let mut file = match File::create(full_path).await {
+            Ok(x) => x,
+            Err(_) => return upload_error("Failed to create file"),
+        };
 
         while let Some(chunk) = field.next().await {
-            println!("-- CHUNK: \n{:?}", std::str::from_utf8(&chunk.unwrap()));
+            // println!("-- CHUNK: \n{:?}", std::str::from_utf8(&chunk.unwrap()));
+            match file.write_all(&chunk.unwrap()).await {
+                Err(e) => {
+                    println!(
+                        "Aborting write.  Failed to write file '{}': {}",
+                        file_name, e
+                    );
+                    continue 'field;
+                }
+                _ => {}
+            }
         }
     }
 
