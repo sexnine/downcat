@@ -106,7 +106,8 @@ Note: While developing, the frontend and backend should be run seperately.  When
   - [ ] Enhanced File Icons
   - [ ] Download multiple files
   - [x] Directory History `v0.1.0`
-- [ ] Uploading Files
+- [x] Uploading Files `v0.3.0`
+  - [ ] Uploading multiple files
   - [ ] Uploading Folders
 - [ ] Managing Files/Folders
   - [ ] Renaming
