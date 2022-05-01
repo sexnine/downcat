@@ -72,17 +72,17 @@ async fn main() -> std::io::Result<()> {
 
     let mut rustls_config: Option<ServerConfig> = None;
 
+    println!("\n{}\n", "🐈 Starting downcat...".dimmed());
+
     if ssl {
         rustls_config = match ssl::load_rustls_config() {
             Ok(x) => Some(x),
             Err(e) => {
-                println!("Error enabling SSL: {e}");
+                println!("{}", format!("❌ Error enabling SSL: {e}").bright_red());
                 return Ok(());
             }
         }
     }
-
-    println!("\n{}\n", "🐈 Starting downcat...".dimmed());
 
     let cwd_buf = std::env::current_dir().unwrap();
     let cwd = String::from(cwd_buf.as_path().to_str().unwrap());
@@ -126,11 +126,17 @@ async fn main() -> std::io::Result<()> {
             server.bind(addr)
         } {
             Ok(x) => x.run(),
-            _ => return Ok(()),
+            Err(e) => {
+                println!(
+                    "{}",
+                    format!("❌ An error occoured while starting downcat server: {e}").bright_red()
+                );
+                return Ok(());
+            }
         },
         on_ready(host, port, ssl, check_for_update)
     ) {
-        (Err(e), _) => println!("An error occoured: {e}"),
+        (Err(e), _) => println!("{}", format!("❌ An error occoured: {e}").bright_red()),
         _ => {}
     }
 
