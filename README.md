@@ -24,7 +24,7 @@ A simple cross-platform remote file management tool to upload and download files
 
 🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
-🌈 **Cross platform** - Windows and Linux support (MacOS soon)
+🌈 **Cross platform** - Windows, Linux and MacOS support
 
 ## 🎉 Install
 
@@ -52,7 +52,7 @@ Run downcat to serve your current directory and then open the link in your brows
 <pre><samp>~$ <kbd>downcat</kbd>
 🐈 Starting downcat...
 
-✅ Downcat v0.3.0 running!
+✅ Downcat v0.3.1 running!
 ✨ Listening on http://192.168.0.23:3030/
 </samp></pre>
 
@@ -122,8 +122,8 @@ Note: While developing, the frontend and backend should be run seperately.  When
   - [x] `downcat update` to perform a self-update `v0.2.0`
 - [ ] Cross Platform support
   - [x] Windows
-  - [x] Linux `untested`
-  - [ ] MacOS `untested`
+  - [x] Linux
+  - [x] MacOS `v0.3.1`
 - [ ] Allow downcat to access any directory
   - With the `--any` flag, downcat will be able to access any directory or files it has permissions to
 
