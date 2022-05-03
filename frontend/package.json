@@ -6,6 +6,7 @@
     "dev": "vite",
     "serve": "vite --host",
     "build": "npm run lint && vue-tsc --noEmit && vite build",
+    "build-nolint": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "npm run eslint && npm run prettier",
     "eslint": "eslint --fix \"**/*.{vue,js,ts}\" || exit 0",

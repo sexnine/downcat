@@ -25,7 +25,7 @@ qstring = "0.7.2"
 local-ip-address = "0.4.4"
 rcgen = "0.9.2"
 rustls = "0.20.4"
-self_update = {version = "0.30.0", features = ["archive-zip", "compression-zip-bzip2", "compression-zip-deflate"]}
+self_update = {version = "0.30.0", features = ["archive-zip", "compression-zip-bzip2", "compression-zip-deflate", "rustls"]}
 actix-multipart = "0.4.0"
 
 [build-dependencies]

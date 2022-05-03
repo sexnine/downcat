@@ -1,0 +1,16 @@
+name: "Build frontend"
+description: "Builds the frontend"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with: 
+        node-version: 17
+    - run: npm install
+      shell: bash
+      working-directory: "./frontend"
+    - run: npm run build-nolint
+      shell: bash
+      working-directory: "./frontend"
+    
