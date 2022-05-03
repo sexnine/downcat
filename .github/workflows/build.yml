@@ -49,7 +49,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: x86_64-pc-windows-msvc
-          path: target\x86_64-unknown-linux-gnu\release\downcat.exe
+          path: target\x86_64-pc-windows-msvc\release\downcat.exe
 
   # build-macos:
   #   name: "🏗 MacOS build"
