@@ -1,6 +1,5 @@
 {
   "singleQuote": false,
   "semi": true,
-  "vueIndentScriptAndStyle": true,
-  "endOfLine": "crlf"
+  "vueIndentScriptAndStyle": true
 }
