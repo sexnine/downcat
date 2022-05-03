@@ -13,8 +13,10 @@
         </p>
       </div>
       <input
+        ref="passwordFieldEl"
         v-model="passwordField"
         class="mb-4 rounded-md bg-gray-900 px-2 py-1 outline-0 ring-red-500 transition focus:ring-2 focus:drop-shadow-md"
+        autofocus
         type="password"
         placeholder="Password"
         @keyup.enter="signInButton"
@@ -36,11 +38,15 @@
   import { axios } from "../axios";
   import { store } from "../store";
   import router from "../router";
+  import { onStartTyping } from "@vueuse/core";
 
   const loading = ref(false);
   const errorMsg = ref("");
 
   const passwordField = ref("");
+  const passwordFieldEl = ref<HTMLInputElement>();
+
+  onStartTyping(() => passwordFieldEl.value?.focus());
 
   const signInButton = () => {
     errorMsg.value = "";
