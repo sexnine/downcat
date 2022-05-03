@@ -140,7 +140,7 @@
 
   const sortFns: { [key: string]: (a: File, b: File) => number } = {
     Name: (a: File, b: File) => a.name.localeCompare(b.name),
-    Size: (a: File, b: File) => (a.size || 0) - (b.size || 0),
+    Size: (a: File, b: File) => (a.size ?? -1) - (b.size ?? -1),
     Modified: (a: File, b: File) => (a.modified || 0) - (b.modified || 0),
     Created: (a: File, b: File) => (a.created || 0) - (b.created || 0),
   };
