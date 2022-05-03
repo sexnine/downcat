@@ -22,11 +22,11 @@ jobs:
           use-cross: false
           command: build
           args: --target x86_64-unknown-linux-gnu --release
-      - run: zip x86_64-unknown-linux-gnu.zip target/x86_64-unknown-linux-gnu/release/downcat
+      # - run: zip x86_64-unknown-linux-gnu.zip target/x86_64-unknown-linux-gnu/release/downcat
       - uses: actions/upload-artifact@v3
         with:
-          name: x86_64-unknown-linux-gnu.zip
-          path: x86_64-unknown-linux-gnu.zip
+          name: x86_64-unknown-linux-gnu
+          path: target/x86_64-unknown-linux-gnu/release/downcat
   
   build-windows:
     name: "🏗 Windows build"
@@ -44,12 +44,12 @@ jobs:
           use-cross: false
           command: build
           args: --target x86_64-pc-windows-msvc --release
-      - run: Compress-Archive .\target\x86_64-pc-windows-msvc\release\downcat.exe x86_64-pc-windows-msvc.zip
-        shell: pwsh
+      # - run: Compress-Archive .\target\x86_64-pc-windows-msvc\release\downcat.exe x86_64-pc-windows-msvc.zip
+      #   shell: pwsh
       - uses: actions/upload-artifact@v3
         with:
-          name: x86_64-pc-windows-msvc.zip
-          path: x86_64-pc-windows-msvc.zip
+          name: x86_64-pc-windows-msvc
+          path: target\x86_64-unknown-linux-gnu\release\downcat.exe
 
   # build-macos:
   #   name: "🏗 MacOS build"
