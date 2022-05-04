@@ -1,5 +1,5 @@
 # Downcat Linux installer https://github.com/sexnine/downcat
-# Install script by jethro#1547
+# Install script made with huge help by jethro#1547
 
 echo "Welcome to the downcat installer.  This will download and install the latest version of downcat."
 echo ''
@@ -9,7 +9,7 @@ echo ''
 
 if [ ! -e "downcat" ] || [ ! -e "x86_64-unknown-linux-gnu.zip" ]; then
 	# The below curl command uses the GitHub API to get the download link for the latest release and parses it to wget to install
-        curl --silent https://api.github.com/repos/sexnine/downcat/releases/latest | grep 'browser_download_url' | sed -r 's/^[^:]*:(.*)$/\1/' | sed -e '1d' | xargs wget --quiet
+        curl --silent https://api.github.com/repos/sexnine/downcat/releases/latest | grep 'browser_download_url' | sed -r 's/^[^:]*:(.*)$/\1/' | grep "x86_64-unknown-linux-gnu.zip" | xargs wget --quiet
         echo "Unzipping..."
         unzip -q ./x86_64-unknown-linux-gnu.zip
 else
@@ -32,8 +32,12 @@ if [ "$USRBIN" = "y" ]; then
 	fi
 	echo ''
 	echo "Moving now..."
-	cp downcat /usr/bin
+	mv downcat /usr/bin/downcat
 
 fi
+
+echo "Cleaning up zip file..."
+rm x86_64-unknown-linux-gnu.zip
+
 echo ''
 echo 'Installation done! Run "downcat --help" to start.'
