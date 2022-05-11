@@ -20,7 +20,7 @@ A simple cross-platform remote file management tool to upload and download files
 ## ✨ Features
 ⚡ **Fast** - Quick startup, performant API
 
-✨ **Easy to install** - No dependancies, just one file
+✨ **Easy to install** - No dependancies, just one command
 
 🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
