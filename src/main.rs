@@ -63,9 +63,13 @@ async fn main() -> std::io::Result<()> {
 
     let port = args.port.unwrap_or(3030);
     let password = args.password;
-    let host = args.bind.unwrap_or(match local_ip() {
-        Ok(x) => x.to_string(),
-        _ => String::from("0.0.0.0"),
+    let host = args.bind.unwrap_or(if !cfg!(debug_assertions) {
+        match local_ip() {
+            Ok(x) => x.to_string(),
+            _ => String::from("0.0.0.0"),
+        }
+    } else {
+        String::from("localhost")
     });
     let ssl = args.ssl;
     let check_for_update = !args.disable_update_check;
