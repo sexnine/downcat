@@ -20,6 +20,9 @@
 <script setup lang="ts">
   import { ref, defineProps, defineEmits } from "vue";
   import { axios } from "../axios";
+  import { useToast, POSITION } from "vue-toastification";
+
+  const toast = useToast();
 
   const inputEl = ref<HTMLInputElement>();
 
@@ -51,6 +54,15 @@
 
   const onUploadComplete = () => {
     emit("uploadComplete");
+    toast.success("Upload complete", {
+      position: POSITION.TOP_CENTER,
+      pauseOnHover: false,
+      hideProgressBar: true,
+      timeout: 1500,
+      showCloseButtonOnHover: true
+    });
+    inputEl.value && (inputEl.value.value = "");
+    filesChanged();
   };
 
   const props = defineProps<{
