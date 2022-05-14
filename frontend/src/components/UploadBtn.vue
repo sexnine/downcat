@@ -4,6 +4,7 @@
       ref="inputEl"
       type="file"
       class="w-64 rounded-md bg-gray-800 file:rounded-l-md file:border-0 file:bg-red-500 file:text-white"
+      multiple="true"
       @change="filesChanged"
     />
   </div>
