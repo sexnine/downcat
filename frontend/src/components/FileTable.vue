@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="f in files" :key="f.name">
+        <tr v-for="f in filteredFiles" :key="f.name">
           <td>
             <Checkbox text=" " :checked="false" />
           </td>
@@ -63,12 +63,21 @@
         </tr>
       </tbody>
     </table>
-    <p class="px-4 text-gray-300">{{ files.length }} Items</p>
+    <p class="px-4 text-gray-300">
+      {{ files.length }} Items, {{ filteredFiles.length }} Shown
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, defineProps, defineExpose, defineEmits, nextTick } from "vue";
+  import {
+    ref,
+    defineProps,
+    defineExpose,
+    defineEmits,
+    nextTick,
+    computed,
+  } from "vue";
   import Checkbox from "./Checkbox.vue";
   import LoadingScreen from "./LoadingScreen.vue";
   import ErrorScreen from "./ErrorScreen.vue";
@@ -81,6 +90,7 @@
   const loading = ref(true);
   const error = ref("");
   const files = ref<File[]>([]);
+  const searchInput = computed(() => props.searchInputRaw.toLowerCase());
 
   const setLoading = (val: boolean) => (loading.value = val);
   const setError = (val: string) =>
@@ -151,6 +161,11 @@
         : (a, b) => sortFns[sortField.value](b, a)
     );
   };
+  const filteredFiles = computed(() => {
+    return files.value.filter((a) =>
+      a.name.toLocaleLowerCase().includes(searchInput.value)
+    );
+  });
 
   // const check = () => (checked.value = !checked.value);
   const dirClicked = (path: string) => emit("switchDir", path);
@@ -167,6 +182,7 @@
 
   const props = defineProps<{
     error?: string;
+    searchInputRaw: string;
   }>();
 
   const emit = defineEmits<{

@@ -59,7 +59,7 @@
       pauseOnHover: false,
       hideProgressBar: true,
       timeout: 1500,
-      showCloseButtonOnHover: true
+      showCloseButtonOnHover: true,
     });
     inputEl.value && (inputEl.value.value = "");
     filesChanged();

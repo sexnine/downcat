@@ -6,10 +6,10 @@
       class="z-[70] justify-center"
       @button-clicked="getServerInfo"
     />
-    <div class="flex items-end p-2 shadow-md">
+    <div class="flex w-full items-end p-2 shadow-md">
       <img :src="downcatImg" draggable="false" class="select-none" />
-      <div class="">
-        <p class="mb-2 text-lg font-semibold">
+      <div class="w-full pr-2">
+        <p class="mb-2 mt-2 text-lg font-semibold">
           Downcat
           <span
             class="rounded-md bg-red-500 px-1 text-base font-medium text-white"
@@ -17,7 +17,7 @@
           >
         </p>
         <div
-          class="relative mb-4 flex h-min items-center gap-x-2 rounded-lg bg-gray-800 px-4 py-2"
+          class="relative mb-4 flex h-min w-fit items-center gap-x-2 rounded-lg bg-gray-800 px-4 py-2"
         >
           <loading-screen :loading="path == null" />
           <fa-icon :icon="['fas', 'folder']" class="text-lg" />
@@ -50,28 +50,35 @@
             @click="switchToHomeDir"
           />
           <upload-btn :path="path" @upload-complete="refresh" />
-        </div>
-      </div>
-      <div class="relative grow">
-        <div class="absolute bottom-0 right-0 flex items-center pb-2 pr-2">
-          <div class="mr-2 flex h-3 w-3">
-            <span
-              class="absolute inline-flex h-3 w-3 animate-ping rounded-full opacity-75"
-              :class="connected ? 'bg-green-400' : 'bg-red-400'"
-            ></span>
-            <span
-              class="relative inline-flex h-3 w-3 rounded-full"
-              :class="connected ? 'bg-green-500' : 'bg-red-500'"
-            ></span>
+          <div class="absolute right-0 flex items-center pr-4">
+            <div class="mr-2 flex h-3 w-3">
+              <span
+                class="absolute inline-flex h-3 w-3 animate-ping rounded-full opacity-75"
+                :class="connected ? 'bg-green-400' : 'bg-red-400'"
+              ></span>
+              <span
+                class="relative inline-flex h-3 w-3 rounded-full"
+                :class="connected ? 'bg-green-500' : 'bg-red-500'"
+              ></span>
+            </div>
+            <p>{{ connected ? "Connected" : "Disconnected" }}</p>
           </div>
-          <p>{{ connected ? "Connected" : "Disconnected" }}</p>
+        </div>
+        <div class="mb-2 flex items-center justify-end gap-2">
+          <input
+            v-model="searchInput"
+            placeholder="Search..."
+            class="rounded-md bg-gray-800 px-2 py-1 shadow-md outline-0 ring-red-500 transition focus:ring-2"
+          />
         </div>
       </div>
+      <div class="relative grow"></div>
     </div>
     <file-table
       ref="filesTable"
       :files="files"
       :loading="filesLoading"
+      :search-input-raw="searchInput"
       @switch-dir="switchDir"
       @err-btn-clicked="refresh"
     />
@@ -89,6 +96,7 @@
 
   const filesLoading = ref(true);
   const files = ref([]);
+  const searchInput = ref<string>("");
   const homePath = ref<string | null>(null);
   const path = ref<string | null>(null);
   const pathHistory = ref<string[]>([]);
