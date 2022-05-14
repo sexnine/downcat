@@ -52,7 +52,7 @@ Run downcat to serve your current directory and then open the link in your brows
 <pre><samp>~$ <kbd>downcat</kbd>
 🐈 Starting downcat...
 
-✅ Downcat v0.3.1 running!
+✅ Downcat v0.3.2 running!
 ✨ Listening on http://192.168.0.23:3030/
 </samp></pre>
 
@@ -102,12 +102,12 @@ Note: While developing, the frontend and backend should be run seperately.  When
 - [x] Retrieve Files and Folders `v0.1.0`
   - [x] Get metadata `v0.1.0`
   - [x] Sort file list `v0.1.0`
-  - [ ] Search file list
+  - [x] Search file list `v0.3.2`
   - [ ] Enhanced File Icons
   - [ ] Download multiple files
   - [x] Directory History `v0.1.0`
 - [x] Uploading Files `v0.3.0`
-  - [ ] Uploading multiple files
+  - [x] Uploading multiple files `v0.3.2`
   - [ ] Uploading Folders
 - [ ] Managing Files/Folders
   - [ ] Renaming
@@ -120,7 +120,7 @@ Note: While developing, the frontend and backend should be run seperately.  When
 - [x] Updater `v0.2.0`
   - [x] Checks for updates `v0.2.0`
   - [x] `downcat update` to perform a self-update `v0.2.0`
-- [ ] Cross Platform support
+- [x] Cross Platform support
   - [x] Windows
   - [x] Linux
   - [x] MacOS `v0.3.1`
