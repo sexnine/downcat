@@ -58,7 +58,21 @@ Run downcat to serve your current directory and then open the link in your brows
 
 See extra options by viewing the help with `downcat -h` or `downcat --help`
 
+You can update downcat to the latest available version using `downcat update`
+
 Downcat is not meant to be used as a web server.  It is meant to be used as a quick and easy file management utility for when you quickly need to up/download a file from a server.
+
+### 💎 All options
+| Argument | Description | Default Value |
+|    --    |     ---     |      ---      |
+| `-h, --help` | Shows help message |
+| `-V, --version` | Shows version |
+| `--disable-update-check` | Disables update check on startup | Check for updates |
+| `-p, --port <port>` | Port to listen on | `3030` |
+| `--ssl` | Enables SSL (Recommended) | Off |
+| `-P, --password <password>` | Sets a password for accessing downcat and the APIs (Recommended). <br> Will need to reauthenticate when restarting downcat, even when using the same password. | None |
+| `-b, --bind <host>` | The IP to listen on | Local IP (or `0.0.0.0` if couldn't get local IP) |
+
 
 ## 🛠 Development
 
