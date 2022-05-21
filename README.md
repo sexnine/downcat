@@ -16,6 +16,7 @@ A simple cross-platform remote file management tool to upload and download files
 
 </div>
 
+![](assets/downcat-image.png)
 
 ## ✨ Features
 ⚡ **Fast** - Quick startup, performant API
