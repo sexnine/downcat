@@ -42,9 +42,14 @@ curl -sSL https://raw.githubusercontent.com/sexnine/downcat/main/install/downcat
 ### Manual install
 
 1. Download the latest binary from [the releases tab](https://github.com/sexnine/downcat/releases)
-2. Place it into your path
-3. Make it executable
-4. Run with `downcat`
+2. Unzip the file
+3. Place the executable into your path
+4. Make it executable
+5. Run with `downcat`
+
+### Build it yourself
+
+See [🏗 Building](#-building) and other info under [⚙ Development](#-development) and follow steps 3-5 just above.
 
 ## 🤔 Usage
 
@@ -77,14 +82,8 @@ Downcat is not meant to be used as a web server.  It is meant to be used as a qu
 
 ## 🛠 Development
 
-<div align="right">
-
-📜 **Prerequisites** |
- -- |
-[NodeJS](https://nodejs.org/) & NPM
-[Rust](https://www.rust-lang.org/tools/install) & Cargo
-
-</div>
+📜 **Prerequisites** | [NodeJS](https://nodejs.org/) & NPM | [Rust](https://www.rust-lang.org/tools/install) & Cargo
+ -- | -- | -- |
 
 - Clone the repo `git clone https://github.com/sexnine/downcat.git`
 - Go into the project's directory `cd downcat/`
