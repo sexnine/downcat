@@ -14,9 +14,9 @@ A simple cross-platform remote file management tool to upload and download files
 [![Built with Typescript](https://img.shields.io/badge/-Typescript-2f74c0?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Built with TailwindCSS](https://img.shields.io/badge/-Tailwind-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-</div>
-
 ![](assets/downcat-image.png)
+
+</div>
 
 ## ✨ Features
 ⚡ **Fast** - Quick startup, performant API
