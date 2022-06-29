@@ -48,6 +48,7 @@ async fn main() -> std::io::Result<()> {
     let args = models::Args::parse();
 
     match &args.command {
+        #[cfg(not(feature = "no-self-update"))]
         Some(SubCommands::Update) => {
             match web::block(|| updater::update()).await {
                 Err(_) => println!(
@@ -72,7 +73,12 @@ async fn main() -> std::io::Result<()> {
         String::from("localhost")
     });
     let ssl = args.ssl;
+
+    #[cfg(not(feature = "no-update-checker"))]
     let check_for_update = !args.disable_update_check;
+
+    #[cfg(feature = "no-update-checker")]
+    let check_for_update = false;
 
     let mut rustls_config: Option<ServerConfig> = None;
 

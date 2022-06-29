@@ -99,6 +99,7 @@ pub struct Args {
     #[clap(long = "bind", short = 'b', help = "IP to bind to (default local IP)")]
     pub bind: Option<String>,
 
+    #[cfg(not(feature = "no-update-checker"))]
     #[clap(
         long = "disable-update-check",
         help = "Will disable the downcat update checker"
@@ -114,5 +115,6 @@ pub struct Args {
 
 #[derive(clap::Subcommand)]
 pub enum SubCommands {
+    #[cfg(not(feature = "no-self-update"))]
     Update,
 }

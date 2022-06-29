@@ -44,12 +44,16 @@ pub fn check_for_update() {
     // async {
     if let Some(latest_version) = is_newer_version() {
         println!(
-            "\n{} {}\n{}{}\n",
+            "\n{} {}\n",
             "🎉 A new version is available!".bright_green(),
             format!("{} -> {}", info::version(), latest_version).bright_magenta(),
+        );
+        #[cfg(not(feature = "no-self-update"))]
+        println!(
+            "{}{}\n",
             "   You can update by running ".bright_green(),
             "downcat update".bright_blue()
-        );
+        )
     }
     // }
 }
