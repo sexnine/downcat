@@ -32,11 +32,11 @@
     (showUploadBtn.value = (inputEl.value?.files?.length || 0) > 0);
 
   const upload = () => {
-    let files = inputEl.value?.files;
+    const files = inputEl.value?.files;
 
     if (!files) return;
 
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("options", JSON.stringify({ path: props.path }));
 
     for (let i = 0; i < files?.length; i++) {

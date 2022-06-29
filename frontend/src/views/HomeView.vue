@@ -178,7 +178,7 @@
         filesTable.value?.setFiles(res.data["files"]);
       })
       .catch((err) => {
-        let error = err.response ? err.response.data.error : "Unknown error"; // TODO: implement timeout error
+        const error = err.response ? err.response.data.error : "Unknown error"; // TODO: implement timeout error
         // @ts-ignore
         filesTable.value?.setError(error);
       });
