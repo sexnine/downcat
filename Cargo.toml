@@ -10,25 +10,25 @@ no-self-update = []
 no-update-checker = ["no-self-update"]
 
 [dependencies]
-actix-web = { version = "4", features = ["rustls"] }
+actix-web = { version = "4.1.0", features = ["rustls"] }
 static-files = "0.2.3"
 actix-web-static-files = "4.0.0"
 colored = "2.0.0"
-tokio = { version = "1.18.1", features = ["full"] }
+tokio = { version = "1.19.2", features = ["full"] }
 serde = { version = "1.0.137", features = ["derive"] }
-serde_json = "1.0.80"
-tokio-stream = { version = "0.1.8", features = ["fs"] }
+serde_json = "1.0.81"
+tokio-stream = { version = "0.1.9", features = ["fs"] }
 actix-codec = "0.5.0"
 bytes = "1.1.0"
 futures-util = "0.3.21"
-uuid = { version = "1.0.0", features = ["serde", "v4"] }
+uuid = { version = "1.1.2", features = ["serde", "v4"] }
 blob-uuid = "0.5.0"
-clap = { version = "3.1.15", features = ["derive"] }
+clap = { version = "3.2.5", features = ["derive"] }
 actix-cors = "0.6.1"
 qstring = "0.7.2"
 local-ip-address = "0.4.4"
 rcgen = "0.9.2"
-rustls = "0.20.4"
+rustls = "0.20.6"
 self_update = {version = "0.30.0", features = ["archive-zip", "compression-zip-bzip2", "compression-zip-deflate", "rustls"]}
 actix-multipart = "0.4.0"
 
