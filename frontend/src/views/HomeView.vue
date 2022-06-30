@@ -90,7 +90,7 @@
   import LoadingScreen from "../components/LoadingScreen.vue";
   import FileTable from "../components/FileTable.vue";
   import { axios } from "../axios";
-  import downcatImg from "../assets/downcat-sm.png";
+  import downcatImg from "../assets/downcat-sm.png?url";
   import ErrorScreen from "../components/ErrorScreen.vue";
   import UploadBtn from "../components/UploadBtn.vue";
 
