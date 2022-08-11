@@ -21,11 +21,13 @@ A simple cross-platform remote file management tool to upload and download files
 ## ✨ Features
 ⚡ **Fast** - Quick startup, performant API
 
-✨ **Easy to install** - No dependancies, just one command
+✨ **Easy to install** - No dependancies<sup>*</sup>, just one command
 
 🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
 🌈 **Cross platform** - Windows, Linux and MacOS support
+
+<sup>*Except for `unzip` to extract the executable from the archive</sup>
 
 ## 🎉 Install
 
