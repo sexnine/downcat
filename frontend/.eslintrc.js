@@ -27,7 +27,7 @@ module.exports = {
         semi: true,
         vueIndentScriptAndStyle: true,
         endOfLine: "crlf",
-        bracketSameLine: true,
+        bracketSameLine: false,
       },
     ],
   },

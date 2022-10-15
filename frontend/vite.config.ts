@@ -16,7 +16,7 @@ export default defineConfig({
   build: {
     cssCodeSplit: false,
   },
-    server: {
-      port: 3000,
-    },
+  server: {
+    port: 3000,
+  },
 });
