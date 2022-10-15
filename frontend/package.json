@@ -8,9 +8,8 @@
     "build": "npm run lint && vue-tsc --noEmit && vite build",
     "build-nolint": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "npm run eslint && npm run prettier",
-    "eslint": "eslint --fix \"**/*.{vue,js,ts}\" || exit 0",
-    "prettier": "prettier --write \"**/*.{vue,js,ts,json}\""
+    "lint": "npm run eslint",
+    "eslint": "eslint --fix \"**/*.{vue,js,ts}\" || exit 0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -30,8 +29,8 @@
   "devDependencies": {
     "@babel/types": "^7.18.7",
     "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.2",
