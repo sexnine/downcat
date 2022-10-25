@@ -13,7 +13,7 @@ if [ ! -e "downcat" ] || [ ! -e "x86_64-unknown-linux-gnu.zip" ]; then
         echo "Unzipping..."
         unzip -q ./x86_64-unknown-linux-gnu.zip
 else
-	echo "One or multiple installation files already exist in this directory, continuing without redownloading..."
+	echo "One or multiple installation files already exist in this directory, continuing without re-downloading..."
 
 fi
 

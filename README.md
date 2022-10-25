@@ -21,11 +21,11 @@ A simple cross-platform remote file management tool to upload and download files
 ## ✨ Features
 ⚡ **Fast** - Quick startup, performant API
 
-✨ **Easy to install** - No dependancies<sup>*</sup>, just one command
+✨ **Easy to install** - No dependencies<sup>*</sup>, just one command
 
 🗂 **Upload and download files easily** - Using HTTP/S with a sexy web UI
 
-🌈 **Cross platform** - Windows, Linux and MacOS support
+🌈 **Cross platform** - Windows, Linux and macOS support
 
 <sup>*Except for `unzip` to extract the executable from the archive</sup>
 
@@ -90,9 +90,9 @@ Downcat is not meant to be used as a web server.  It is meant to be used as a qu
 - Clone the repo `git clone https://github.com/sexnine/downcat.git`
 - Go into the project's directory `cd downcat/`
   
-### ⚙ Installing Dependancies
+### ⚙ Installing Dependencies
 - Go into the frontend directory `cd frontend/`
-- Install NPM dependancies with `npm i`
+- Install NPM dependencies with `npm i`
 - Rust dependencies will automatically install when building or running the project with `cargo build` & `cargo run` respectively.
 
 ### ▶ Running
@@ -102,7 +102,7 @@ Downcat is not meant to be used as a web server.  It is meant to be used as a qu
 - Run the dev server with `npm run dev`.  The dev server supports hot reloading.
 - Modify the API endpoint in `.env.development` if you need to.
 
-Note: While developing, the frontend and backend should be run seperately.  When building a release version, the frontend's files will be embedded into the rust binary.
+Note: While developing, the frontend and backend should be run separately.  When building a release version, the frontend's files will be embedded into the rust binary.
 
 #### Backend
 - Simply run with `cargo run` in the project root.
@@ -110,7 +110,7 @@ Note: While developing, the frontend and backend should be run seperately.  When
 ### 🏗 Building
 1. Build the frontend
    1. Go into the frontend directory `cd frontend/`
-   2. Install dependancies if you haven't already with `npm i`
+   2. Install dependencies if you haven't already with `npm i`
    3. Build the frontend with `npm run build`
 2. Build using `cargo build --release`
 

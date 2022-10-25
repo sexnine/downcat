@@ -107,21 +107,21 @@
 
   const filesTable = ref<InstanceType<typeof FileTable> | null>(null);
 
-  const switchDir = (ipath: string) => {
+  const switchDir = (iPath: string) => {
     pathHistory.value.splice(historyIndex.value + 1);
     historyIndex.value++;
-    pathHistory.value.push(ipath);
-    switchDirWithoutHistory(ipath);
+    pathHistory.value.push(iPath);
+    switchDirWithoutHistory(iPath);
   };
 
-  const switchDirWithoutHistory = (ipath: string) => {
-    if (ipath == path.value) return;
+  const switchDirWithoutHistory = (iPath: string) => {
+    if (iPath == path.value) return;
     // @ts-ignore
     filesTable.value?.removeError();
     // @ts-ignore
     filesTable.value?.setLoading(true);
-    console.log(`✨ Switching dir: ` + ipath);
-    path.value = ipath;
+    console.log(`✨ Switching dir: ` + iPath);
+    path.value = iPath;
     getFiles();
   };
 

@@ -53,7 +53,7 @@ async fn main() -> std::io::Result<()> {
             match web::block(|| updater::update()).await {
                 Err(_) => println!(
                     "{}",
-                    "❌ An unexpected error occoured while updating downcat".bright_red()
+                    "❌ An unexpected error occurred while updating downcat".bright_red()
                 ),
                 _ => {}
             }
@@ -139,14 +139,14 @@ async fn main() -> std::io::Result<()> {
             Err(e) => {
                 println!(
                     "{}",
-                    format!("❌ An error occoured while starting downcat server: {e}").bright_red()
+                    format!("❌ An error occurred while starting downcat server: {e}").bright_red()
                 );
                 return Ok(());
             }
         },
         on_ready(host, port, ssl, check_for_update)
     ) {
-        (Err(e), _) => println!("{}", format!("❌ An error occoured: {e}").bright_red()),
+        (Err(e), _) => println!("{}", format!("❌ An error occurred: {e}").bright_red()),
         _ => {}
     }
 

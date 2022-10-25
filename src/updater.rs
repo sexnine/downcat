@@ -66,7 +66,7 @@ pub fn update() {
         _ => {
             println!(
                 "{}",
-                "❌ An unexpected error occoured while updating downcat".bright_red()
+                "❌ An unexpected error occurred while updating downcat".bright_red()
             );
             return;
         }
@@ -79,7 +79,7 @@ pub fn update() {
         Ok(s) => match s {
             Status::Updated(v) => println!(
                 "{}",
-                format!("✅ Sucessfully updated downcat to v{}!", v).bright_green()
+                format!("✅ Successfully updated downcat to v{}!", v).bright_green()
             ),
             Status::UpToDate(v) => println!(
                 "{}",

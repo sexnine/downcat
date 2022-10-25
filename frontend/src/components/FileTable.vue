@@ -96,8 +96,8 @@
   const setError = (val: string) =>
     (error.value = "Error loading files: " + val);
   const removeError = () => (error.value = "");
-  const setFiles = (ifiles: File[]) => {
-    files.value = ifiles;
+  const setFiles = (iFiles: File[]) => {
+    files.value = iFiles;
     sortFiles();
     nextTick(() => {
       loading.value = false;
